@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { client } from "@/libs/client";
 import Header from "@/components/Header";
 import ModuleMv from "@/components/ModuleMv";
@@ -82,9 +83,9 @@ export default function Blog({
                         .join(".")}
                     </time>
                     <div className="post-cats">
-                      <a className="post-cat" href="/blog/">
+                      <Link href="/blog/" className="post-cat">
                         {post.category.name}
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <h1 className="post-ttl">{post.title}</h1>
@@ -99,14 +100,14 @@ export default function Blog({
 
                 <div id="nav-below">
                   <span>{prevPost.title}</span>
-                  <a href="/blog/" className="btn btn-border pc-only">
+                  <Link href="/blog/" className="btn btn-border pc-only">
                     <span>一覧に戻る</span>
-                  </a>
+                  </Link>
                   <span>{nextPost.title}</span>
                 </div>
-                <a href="/blog/" className="btn btn-border sp-only">
+                <Link href="/blog/" className="btn btn-border sp-only">
                   <span>一覧に戻る</span>
-                </a>
+                </Link>
               </div>
 
               <div id="entry-sidebar">
