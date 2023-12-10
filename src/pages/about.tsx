@@ -55,19 +55,19 @@ export default function About() {
 
   const histories = [
     {
-      head: "1999年9月",
+      head: "1992年9月",
       cont: "文部科学省の指定業者となる",
     },
     {
-      head: "1999年9月",
+      head: "1993年9月",
       cont: "文部科学省の指定業者となる",
     },
     {
-      head: "1999年9月",
+      head: "1994年9月",
       cont: "文部科学省の指定業者となる",
     },
     {
-      head: "1999年9月",
+      head: "1995年9月",
       cont: "文部科学省の指定業者となる",
     },
   ];
