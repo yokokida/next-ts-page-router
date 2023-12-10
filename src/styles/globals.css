@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities; */
 
-@import url(common.css);
 @import url(home.css);
 @import url(entry.css);
 @import url(module.css);
