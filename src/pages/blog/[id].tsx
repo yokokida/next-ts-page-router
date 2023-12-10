@@ -113,15 +113,20 @@ export default function Blog({
               <div id="entry-sidebar">
                 <Sidebox head="カテゴリー">
                   <div className="post-cats">
-                    {categories.map((category: any) => (
-                      <SideCategory link={category.id} name={category.name} />
+                    {categories.map((category: any, index: number) => (
+                      <SideCategory
+                        key={index}
+                        link={category.id}
+                        name={category.name}
+                      />
                     ))}
                   </div>
                 </Sidebox>
                 <Sidebox head="最新記事">
                   <div className="m-side-container">
-                    {blogs.map((blog: any) => (
+                    {blogs.map((blog: any, index: number) => (
                       <SidePost
+                        key={index}
                         link={`/blog/${blog.id}`}
                         publishedAt={blog.publishedAt}
                         title={blog.title}

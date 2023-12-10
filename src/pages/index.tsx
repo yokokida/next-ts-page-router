@@ -105,8 +105,9 @@ export default function Home({ blogs }: any) {
               />
             </div>
             <div className="img-area">
-              {bizImages.map((img) => (
+              {bizImages.map((img: any, index: number) => (
                 <Image
+                  key={index}
                   src={img.src}
                   alt={img.alt}
                   className="fadein-trigger"
@@ -123,8 +124,9 @@ export default function Home({ blogs }: any) {
           </div>
           <div className="content-box">
             <div className="m-post-container panel is-show">
-              {blogs.map((content: any) => (
+              {blogs.map((content: any, index: number) => (
                 <LoopLine
+                  key={index}
                   id={content.id}
                   publishedAt={content.publishedAt}
                   categoryName={content.category.name}
@@ -142,8 +144,9 @@ export default function Home({ blogs }: any) {
         <LayoutSection sectionId="home-recruit">
           <div className="content-box">
             <div className="img-area img-box">
-              {recruitImages.map((img) => (
+              {recruitImages.map((img: any, index: number) => (
                 <Image
+                  key={index}
                   src={img.src}
                   alt={img.alt}
                   className="fadein-trigger"

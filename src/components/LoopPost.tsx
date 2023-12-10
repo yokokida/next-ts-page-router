@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 function LoopLine(props: any) {
@@ -29,7 +30,7 @@ function LoopCard(props: any) {
       <Link href={`/blog/${props.id}`} className={`item-box ${props.id}`}>
         <div className="post-thumb">
           <div className="img-box">
-            <img
+            <Image
               src={props.thumbnail}
               alt={props.title}
               className="fadein-trigger"
@@ -66,7 +67,7 @@ function LoopCardTrmOnThumb(props: any) {
             <span className="post-cat">{props.categoryName}</span>
           </div>
           <div className="img-box">
-            <img
+            <Image
               src={props.thumbnail}
               alt={props.title}
               className="fadein-trigger"
@@ -97,7 +98,7 @@ function LoopCardOnlyTitle(props: any) {
       <Link href={`/blog/${props.id}`} className={`item-box ${props.id}`}>
         <div className="post-thumb">
           <div className="img-box">
-            <img
+            <Image
               src={props.thumbnail}
               alt={props.title}
               className="fadein-trigger"
@@ -120,7 +121,7 @@ function LoopCardWide(props: any) {
       <Link href={`/blog/${props.id}`} className={`item-box ${props.id}`}>
         <div className="post-thumb">
           <div className="img-box">
-            <img
+            <Image
               src={props.thumbnail}
               alt={props.title}
               className="fadein-trigger"

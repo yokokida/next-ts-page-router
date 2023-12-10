@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type LayoutProps = {
   head: string;
   children: React.ReactNode;
@@ -30,7 +32,7 @@ function SidePost(props: any) {
       <div className="item-box">
         <div className="post-thumb">
           <a href={props.link} className="img-box">
-            <img
+            <Image
               src="/images/common/noimage.jpg"
               alt="ホームページをリニューアルしました"
             />

@@ -24,8 +24,9 @@ export default function Blogs({ blogs }: any) {
         <div className="archive-content">
           <div className="content-width">
             <div className="m-post-container">
-              {blogs.map((content: any) => (
+              {blogs.map((content: any, index: number) => (
                 <LoopLine
+                  key={index}
                   id={content.id}
                   publishedAt={content.publishedAt}
                   categoryName={content.category.name}

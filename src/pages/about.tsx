@@ -530,9 +530,8 @@ export default function About() {
           <SectionTitle ttl="data of oo" subttl="データで見る株式会社OO" />
           <div className="data-container">
             {datum.map((data: any, index: number) => (
-              <div className="img-box">
+              <div key={index} className="img-box">
                 <Image
-                  key={index}
                   src={data.img}
                   alt={data.alt}
                   className="fadein-trigger"
