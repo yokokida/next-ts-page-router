@@ -1,118 +1,178 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import { client } from "@/libs/client";
+import Image from "next/image";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import HomeMv from "@/components/HomeMv";
+import { LayoutSection } from "@/components/LayoutSection";
+import {
+  SectionTitle,
+  SectionTitleLeftcenter,
+  SectionTitleVertical,
+} from "@/components/ModuleSectionTitle";
+import { BtnPrimary } from "@/components/ModuleBtnPrimary";
+import { LoopLine } from "@/components/LoopPost";
 
-const inter = Inter({ subsets: ['latin'] })
+export async function getStaticProps() {
+  const data = await client.get({ endpoint: "blogs" });
 
-export default function Home() {
+  return {
+    props: {
+      blogs: data.contents,
+    },
+  };
+}
+
+export default function Home({ blogs }: any) {
+  const bizImages = [
+    {
+      src: "/images/home/business_01.jpg",
+      alt: "事業内容1",
+      width: 428,
+      height: 379,
+    },
+    {
+      src: "/images/home/business_02.jpg",
+      alt: "事業内容1",
+      width: 428,
+      height: 509,
+    },
+    {
+      src: "/images/home/business_03.jpg",
+      alt: "事業内容1",
+      width: 550,
+      height: 292,
+    },
+  ];
+
+  const recruitImages = [
+    {
+      src: "/images/home/recruit_01.jpg",
+      alt: "採用情報",
+      width: 317,
+      height: 400,
+    },
+    {
+      src: "/images/home/recruit_02.jpg",
+      alt: "採用情報",
+      width: 317,
+      height: 400,
+    },
+    {
+      src: "/images/home/recruit_03.jpg",
+      alt: "採用情報",
+      width: 317,
+      height: 400,
+    },
+    {
+      src: "/images/home/recruit_04.jpg",
+      alt: "採用情報",
+      width: 317,
+      height: 400,
+    },
+  ];
+
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+    <div id="wrapper">
+      <Header />
+      <main>
+        <HomeMv />
+        <LayoutSection sectionId="home-about">
+          <SectionTitleVertical ttl="about us" subttl="私たちについて" />
+          <div className="content-box">
+            <p className="txt">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              <br />
+              Commodi, dignissimos mollitia similique deserunt, et facere
+              <br />
+              dolorem aperiam laboriosam nemo eveniet id quod quis architecto?
+              Voluptatem aliquid eligendi consequunturrecusandae laudantium.
+            </p>
+            <BtnPrimary url="about" txt="会社情報はこちら" class="btn-box" />
+          </div>
+        </LayoutSection>
+        <LayoutSection sectionId="home-business">
+          <SectionTitleLeftcenter ttl="business" subttl="事業内容" />
+          <div className="content-box">
+            <div className="txt-area center-left">
+              <p className="txt">
+                Lorem ipsum dolor sit amet consectetur <br />
+                adipisicing elit. Dignissimos ipsa dolore
+              </p>
+              <BtnPrimary
+                url="business"
+                txt="事業内容はこちら"
+                class="btn-box"
+              />
+            </div>
+            <div className="img-area">
+              {bizImages.map((img) => (
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  className="fadein-trigger"
+                  width={img.width}
+                  height={img.height}
+                />
+              ))}
+            </div>
+          </div>
+        </LayoutSection>
+        <LayoutSection sectionId="home-news">
+          <div className="sec-ttl-wrapper left-center">
+            <SectionTitle ttl="news" subttl="お知らせ" />
+          </div>
+          <div className="content-box">
+            <div className="m-post-container panel is-show">
+              {blogs.map((content: any) => (
+                <LoopLine
+                  id={content.id}
+                  publishedAt={content.publishedAt}
+                  categoryName={content.category.name}
+                  title={content.title}
+                />
+              ))}
+            </div>
+            <BtnPrimary
+              url="blog"
+              txt="一覧はこちら"
+              class="btn-box right-center"
             />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+          </div>
+        </LayoutSection>
+        <LayoutSection sectionId="home-recruit">
+          <div className="content-box">
+            <div className="img-area img-box">
+              {recruitImages.map((img) => (
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  className="fadein-trigger"
+                  width={img.width}
+                  height={img.height}
+                />
+              ))}
+            </div>
+            <div className="txt-area">
+              <SectionTitleLeftcenter ttl="recruit" subttl="採用情報" />
+              <div className="cont">
+                <p className="txt">
+                  Lorem ipsum dolor sit amet,
+                  <br />
+                  consectetur adipisicing elit. Eligendi,
+                  <br />
+                  quia, praesentium cum ex earum, in perferendis
+                </p>
+                <BtnPrimary
+                  url="recruit"
+                  txt="採用情報はこちら"
+                  class="btn-box"
+                />
+              </div>
+            </div>
+          </div>
+        </LayoutSection>
+      </main>
+      <Footer />
+    </div>
+  );
 }
