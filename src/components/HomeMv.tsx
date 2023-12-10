@@ -32,14 +32,14 @@ export default function HomeMv() {
       <div id="home-header">
         <div className="logo-box">
           <div className="img-box">
-            <a href="/">
+            <Link href="/">
               <Image
                 src="/images/common/logo_01.svg"
                 alt="株式会社"
                 width="120"
                 height="36"
               />
-            </a>
+            </Link>
           </div>
         </div>
         <nav className="nav-box">
@@ -94,9 +94,9 @@ export default function HomeMv() {
               <span className="zenkaku">｢紡ぐ」</span>しごと。
             </h2>
           </div>
-          <a href="#home-about" className="scroll">
+          <Link href="#home-about" className="scroll">
             scroll
-          </a>
+          </Link>
         </div>
       </div>
     </>
