@@ -44,8 +44,8 @@ export default function HomeMv() {
         </div>
         <nav className="nav-box">
           <ul id="menu-g-nav-1" className="h-menu">
-            {menus.map((menu) => (
-              <li className="menu-item">
+            {menus.map((menu: any, index: number) => (
+              <li key={index} className="menu-item">
                 <Link href={menu.url}>{menu.txt}</Link>
               </li>
             ))}
@@ -64,8 +64,8 @@ export default function HomeMv() {
               pagination={{ clickable: true }}
               loop={true}
             >
-              {MvImages.map((img) => (
-                <SwiperSlide>
+              {MvImages.map((img:any, index: number) => (
+                <SwiperSlide key={index}>
                   <Image
                     src={img.src}
                     width={1900}

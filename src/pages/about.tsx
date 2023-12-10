@@ -296,8 +296,8 @@ export default function About() {
         <LayoutSectionPt0 sectionId="about-outline">
           <SectionTitle ttl="outline" subttl="会社概要" />
           <div className="m-dl-container">
-            {outlines.map((outline) => (
-              <dl>
+            {outlines.map((outline: any, index: number) => (
+              <dl key={index}>
                 <dt>{outline["head"]}</dt>
                 <dd>{outline["cont"]}</dd>
               </dl>
@@ -307,16 +307,16 @@ export default function About() {
         <LayoutSectionPt0 sectionId="about-license">
           <SectionTitle ttl="license" subttl="取得資格" />
           <ul className="m-list-container">
-            {licenses.map((license) => (
-              <li>{license["name"]}</li>
+            {licenses.map((license, index: number) => (
+              <li key={index}>{license["name"]}</li>
             ))}
           </ul>
         </LayoutSectionPt0>
         <LayoutSectionPt0 sectionId="about-history">
           <SectionTitle ttl="history" subttl="沿革" />
           <div className="m-dl-container">
-            {histories.map((history) => (
-              <dl>
+            {histories.map((history: any, index: number) => (
+              <dl key={index}>
                 <dt>{history.head}</dt>
                 <dd>{history.cont}</dd>
               </dl>
@@ -383,8 +383,9 @@ export default function About() {
         <LayoutSection sectionId="business-intro">
           <SectionTitle ttl="strength" subttl="強み" />
           <ExampleContainer containerClass="m-example-container col-3">
-            {strengthes.map((strength) => (
+            {strengthes.map((strength: any, index: number) => (
               <ExampleBox
+                key={index}
                 imgSrc={strength.img}
                 imgClass=""
                 imgWidth="365"
@@ -398,24 +399,31 @@ export default function About() {
         <LayoutSectionPt0 sectionId="business-service">
           <SectionTitle ttl="service" subttl="サービス" />
           <SquareBlockContainer containerClass="m-service-container">
-            {services.map((service) => (
-              <SquareBlockItem ttl={service.ttl} txt={service.txt} />
+            {services.map((service: any, index: number) => (
+              <SquareBlockItem
+                key={index}
+                ttl={service.ttl}
+                txt={service.txt}
+              />
             ))}
           </SquareBlockContainer>
         </LayoutSectionPt0>
         <LayoutSectionPt0 sectionId="business-client">
           <SectionTitle ttl="client" subttl="主要取引先" />
           <div className="m-rectangle-container">
-            {clients.map((client) => (
-              <div className="item-box">{client["ttl"]}</div>
+            {clients.map((client: any, index: number) => (
+              <div key={index} className="item-box">
+                {client["ttl"]}
+              </div>
             ))}
           </div>
         </LayoutSectionPt0>
         <LayoutSectionPt0 sectionId="business-area">
           <SectionTitle ttl="area" subttl="対応エリア" />
           <ExampleContainer containerClass="m-example-container col-2">
-            {areas.map((area) => (
+            {areas.map((area: any, index: number) => (
               <ExampleBox
+                key={index}
                 imgSrc={area.img}
                 imgClass=""
                 imgWidth="365"
@@ -455,8 +463,9 @@ export default function About() {
         <LayoutSectionPt0 sectionId="recruit-occupation">
           <SectionTitle ttl="occupation" subttl="職種を知る" />
           <ImgTxtContainer>
-            {occupations.map((occupation) => (
+            {occupations.map((occupation: any, index: number) => (
               <ImgTxtBox
+                key={index}
                 imgSrc={occupation.img}
                 imgClassName="fadein-trigger"
                 imgWidth="500"
@@ -470,8 +479,12 @@ export default function About() {
         <LayoutSectionPt0WithoutWidth sectionId="recruit-interview">
           <SectionTitleContentWidth ttl="interview" subttl="社員インタビュー" />
           <div className="m-interview-list">
-            {interviews.map((interview) => (
-              <Link href="/interview/01/" className="item-box fadein-trigger">
+            {interviews.map((interview: any, index: number) => (
+              <Link
+                key={index}
+                href="/interview/01/"
+                className="item-box fadein-trigger"
+              >
                 <div className="img-box">
                   <Image
                     src={interview["img"]}
@@ -501,8 +514,9 @@ export default function About() {
         </LayoutSectionPt0WithoutWidth>
         <LayoutSectionPt0 sectionId="recruit-environment">
           <SectionTitle ttl="environment" subttl="働く環境" />
-          {environments.map((env) => (
+          {environments.map((env: any, index: number) => (
             <ImgTxtBox
+              key={index}
               imgSrc={env.img}
               imgClassName="fadein-trigger"
               imgWidth="600"
@@ -515,9 +529,10 @@ export default function About() {
         <LayoutSectionPt0 sectionId="recruit-data">
           <SectionTitle ttl="data of oo" subttl="データで見る株式会社OO" />
           <div className="data-container">
-            {datum.map((data) => (
+            {datum.map((data: any, index: number) => (
               <div className="img-box">
                 <Image
+                  key={index}
                   src={data.img}
                   alt={data.alt}
                   className="fadein-trigger"
@@ -544,17 +559,29 @@ export default function About() {
                 <div className="panel is-show">
                   <h3 className="ttl ttl-large">新卒採用</h3>
                   <div className="m-dl-container">
-                    {studentConditionTables.map((condition) => (
-                      <DlDtDd head={condition.head} cont={condition.cont} />
-                    ))}
+                    {studentConditionTables.map(
+                      (condition: any, index: number) => (
+                        <DlDtDd
+                          key={index}
+                          head={condition.head}
+                          cont={condition.cont}
+                        />
+                      )
+                    )}
                   </div>
                 </div>
                 <div className="panel">
                   <h3 className="ttl ttl-large">中途採用</h3>
                   <div className="m-dl-container">
-                    {careerConditionTables.map((condition) => (
-                      <DlDtDd head={condition.head} cont={condition.cont} />
-                    ))}
+                    {careerConditionTables.map(
+                      (condition: any, index: number) => (
+                        <DlDtDd
+                          key={index}
+                          head={condition.head}
+                          cont={condition.cont}
+                        />
+                      )
+                    )}
                   </div>
                 </div>
               </div>

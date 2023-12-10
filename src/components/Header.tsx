@@ -23,54 +23,50 @@ export default function Header() {
       link: "/",
       txtEn: "top",
       txtJa: "トップ",
-      subMenu: "",
     },
     {
       link: "/about/",
       txtEn: "about",
       txtJa: "私たちについて",
-      subMenu: "",
     },
     {
       link: "/blog/",
       txtEn: "news",
       txtJa: "お知らせ",
-      subMenu: "",
     },
     {
       link: "/recruit/",
       txtEn: "recruit",
       txtJa: "採用情報",
-      subMenu: [
-        {
-          sublink: "/recruit/#recruit-occupation",
-          subtxt: "仕事を知る",
-        },
-        {
-          sublink: "/recruit/#recruit-interview",
-          subtxt: "社員インタビュー",
-        },
-        {
-          sublink: "/recruit/#recruit-environment",
-          subtxt: "働く環境",
-        },
-        {
-          sublink: "/recruit/#recruit-requirement",
-          subtxt: "募集要項",
-        },
-        {
-          sublink: "/recruit/#recruit-entry",
-          subtxt: "エントリー",
-        },
-      ],
     },
     {
       link: "/contact/",
       txtEn: "contact",
       txtJa: "お問い合わせ",
-      subMenu: "",
     },
   ];
+  // [
+  // 	{
+  // 		sublink: "/recruit/#recruit-occupation",
+  // 		subtxt: "仕事を知る",
+  // 	},
+  // 	{
+  // 		sublink: "/recruit/#recruit-interview",
+  // 		subtxt: "社員インタビュー",
+  // 	},
+  // 	{
+  // 		sublink: "/recruit/#recruit-environment",
+  // 		subtxt: "働く環境",
+  // 	},
+  // 	{
+  // 		sublink: "/recruit/#recruit-requirement",
+  // 		subtxt: "募集要項",
+  // 	},
+  // 	{
+  // 		sublink: "/recruit/#recruit-entry",
+  // 		subtxt: "エントリー",
+  // 	},
+  // ]
 
   return (
     <>
@@ -91,8 +87,8 @@ export default function Header() {
           </div>
           <nav className="nav-area">
             <ul id="menu-g-nav" className="h-menu">
-              {headerMenu.map((menu: any) => (
-                <li className="menu-item">
+              {headerMenu.map((menu: any, index: number) => (
+                <li key={index} className="menu-item">
                   <Link href={menu.link}>{menu.txt}</Link>
                 </li>
               ))}
@@ -109,8 +105,8 @@ export default function Header() {
         <div id="sp-menu">
           <nav>
             <ul id="menu-sp-nav" className="sp-nav">
-              {spMenu.map((menu: any) => (
-                <li className="menu-item">
+              {spMenu.map((menu: any, index: number) => (
+                <li key={index} className="menu-item">
                   <Link href={menu.link}>
                     <span className="en">{menu.txtEn}</span>
                     <br />

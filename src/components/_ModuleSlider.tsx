@@ -22,8 +22,8 @@ function SliderSwiper() {
           pagination={{ clickable: true }}
           loop={true}
         >
-          {MvImages.map((img) => (
-            <SwiperSlide>
+          {MvImages.map((img: any, index: number) => (
+            <SwiperSlide key={index}>
               <Image
                 src={img.src}
                 width={1900}
