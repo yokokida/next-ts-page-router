@@ -135,9 +135,9 @@ export default function Header() {
               新潟県新潟市
               <br />
               TEL.
-              <a href="tel:00000000000" className="tel">
+              <Link href="tel:00000000000" className="tel">
                 00000000000
-              </a>
+              </Link>
               / FAX. 000000000
             </p>
           </div>
