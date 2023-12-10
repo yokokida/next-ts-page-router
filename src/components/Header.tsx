@@ -79,14 +79,14 @@ export default function Header() {
         <div className="h-inner">
           <div className="h-function">
             <h1 className="logo-box">
-              <a href="/" className="img-box">
+              <Link href="/" className="img-box">
                 <Image
                   src="/images/common/logo_01.svg"
                   alt="株式会社"
                   width="146"
                   height="31"
                 />
-              </a>
+              </Link>
             </h1>
           </div>
           <nav className="nav-area">
@@ -111,7 +111,7 @@ export default function Header() {
             <ul id="menu-sp-nav" className="sp-nav">
               {spMenu.map((menu: any) => (
                 <li className="menu-item">
-                  <Link href="">
+                  <Link href={menu.link}>
                     <span className="en">{menu.txtEn}</span>
                     <br />
                     <span className="ja">{menu.txtJa}</span>
